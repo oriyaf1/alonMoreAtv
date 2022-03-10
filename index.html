@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <video src="lowend.mp4" id="myVideo" autoplay="false"></video>
+    <div class="my-buttons" id="my-buttons">
+        <img class="social" src="whatsapp.svg">
+        <img class="social" src="instagram.svg">
+        <img class="social" src="gallery.svg">
+    </div>
+    <div id="text-area">
+        <h1 class="text-line">טרקטרוני אלון מורה</h1>
+        <h1 class="text-line">אקסטרים בהרי השומרון</h1>
+    </div>
+    <script type='text/javascript'>
+        const vid = document.getElementById('myVideo');
+        const buttons = document.getElementById('my-buttons');
+        const socials = document.getElementsByClassName('social');
+
+        console.log(vid);
+        vid.addEventListener('ended', myHandler, false);
+        vid.play();
+        function myHandler(e) {
+            // vid.classList.add('start-animate');
+            // social.classList.add('start-animate');
+        }
+
+        function startSocialFade() {
+            var i = 0;
+            var callback;
+
+            callback = function () {
+                if (i < socials.length) {
+                    socials[i].classList.add('start-animate');
+                    ++i;
+                    setTimeout(callback, 500);
+                }
+            };
+
+            setTimeout(callback, 500);
+        }
+        setTimeout(startSocialFade, 4000);
+    </script>
+</body>
+
+</html>
